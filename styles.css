@@ -1,0 +1,188 @@
+:root {
+    --bg: #0f172a;
+    --card: #1e293b;
+    --text: #e2e8f0;
+    --muted: #94a3b8;
+    --accent: #0050ff;
+    --accent-hover: #003fd0;
+    --error: #f87171;
+    --radius: 16px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: radial-gradient(circle at top, #1e293b, var(--bg) 70%);
+    color: var(--text);
+    font-family: "Inter", system-ui, sans-serif;
+}
+
+.card {
+    width: 100%;
+    max-width: 420px;
+    padding: 32px;
+    background: var(--card);
+    border-radius: var(--radius);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+}
+
+h1 {
+    margin: 0 0 24px;
+    font-family: "Henny Penny", system-ui;
+    font-size: 28px;
+    font-weight: 400;
+    text-align: center;
+    color: #0af809;
+}
+
+h3 {
+    margin: 0 0 24px;
+    font-family: "Henny Penny", system-ui;
+    font-size: 18px;
+    font-weight: 100;
+    text-align: center;
+    color: #0af809;
+}
+
+.field {
+    margin-bottom: 16px;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 14px;
+    color: var(--muted);
+}
+
+input[type="number"] {
+    width: 100%;
+    padding: 12px 14px;
+    font-size: 16px;
+    color: var(--text);
+    background: #0f172a;
+    border: 1px solid #334155;
+    border-radius: 10px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input[type="number"]:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(0, 80, 255, 0.25);
+}
+
+button {
+    position: relative;
+    width: 100%;
+    margin-top: 8px;
+    padding: 14px;
+    font-family: "Henny Penny", system-ui;
+    font-size: 18px;
+    font-weight: 400;
+    color: #0af809;
+    background: var(--accent);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+}
+
+button:hover:not(:disabled) {
+    background: var(--accent-hover);
+}
+
+button:active:not(:disabled) {
+    transform: scale(0.98);
+}
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+/* Спиннер */
+.spinner {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 3px solid rgba(10, 248, 9, 0.3);
+    border-top-color: #0af809;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+}
+
+button.loading .btn-text {
+    visibility: hidden;
+}
+.btn-text {
+    font-size: 25px;
+}
+
+button.loading .spinner {
+    display: block;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Ошибка */
+.error {
+    margin: 12px 0 0;
+    font-size: 14px;
+    color: var(--error);
+    min-height: 1em;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.error.visible {
+    opacity: 1;
+}
+
+/* Результат */
+#result {
+    margin-top: 20px;
+}
+
+.weather {
+    padding: 16px;
+    background: #0f172a;
+    border-radius: 12px;
+    border: 1px solid #334155;
+}
+
+.weather__coords {
+    margin: 0 0 12px;
+    font-size: 13px;
+    color: var(--muted);
+}
+
+.weather__row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    font-size: 16px;
+}
+
+.weather__row + .weather__row {
+    border-top: 1px solid #334155;
+}
+
+.weather__value {
+    font-weight: 600;
+    color: #0af809;
+}
